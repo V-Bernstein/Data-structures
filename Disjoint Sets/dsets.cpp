@@ -11,12 +11,12 @@ void DisjointSets::addelements(int num){
  /* This function should compress paths and works as described in lecture.
      Returns:
      the index of the root of the up-tree in which the parameter element resides */
-int DisjointSets::find(int elem){
-  if(elems[elem] < 0){
-    return elem;
-  }
-  return find(elems[elem]);
+
+int DisjointSets::find( int elem ){
+  if ( sets[elem] < 0 ) return elem;
+  else return ( sets[elem] = find ( sets[elem] ) ); // returns the index of the root
 }
+
  /* This function should be implemented as union-by-size.
 That is, when you setunion two disjoint sets, the smaller (in terms of number of nodes) should point at the larger. This function works as described in lecture, except that you should not assume that the arguments to setunion are roots of existing uptrees.
 
